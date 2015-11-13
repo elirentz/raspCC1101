@@ -352,14 +352,12 @@ void cc1101_send_msg(uint8_t length, uint8_t address, void * data)
 	{
 		rf_buf[0] = length;
 		rf_buf[1] = address;
-		printf("Length: %d; Address: %.02X\n\r", length, address);
 		if (data != NULL)
 		{
 			for (i = 0; i < (length-1); i++) //length byte not included in length
 			{
 				rf_buf[i+2] = *p_data;
 				p_data++;
-				printf("Data[%d]: %.02X\n\r", (i+2), rf_buf[i+2]);
 			}
 		}
 		cc1101_strobe(CC1101_STROBE_SFTX, CC1101_WRITE_SINGLE); // clear tx fifo
@@ -388,5 +386,4 @@ void cc1101_tx_end_wait()
 	while(READ_GD02);
 	// End of Tx 
 	printf("Message Sent.\n\r");
-	printf("Waiting for Response...\n\r");
 }	
