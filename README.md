@@ -9,9 +9,14 @@ but can use the 915 MHz range using a preprocessor variable in the cc1101.h file
 The default reset configuration can be used as well by setting another
 preprocessor variable in the cc1101.h file
 
-Gpio setup:
-	--Pi--	  cc1101
-	----------------
-	-Gpio4 	<- GDO2
-	-Gpio5 	-> CS/EN
-	-Gpio17	<- MISO -jumpered from spi to avoid pin function change
+##Main functionality
+There's a basic program in main.c that demonstrates the usage 
+of some of the functions.
+The command line usage is as follows:
+-First option:
+	-r  Read. Puts the chip into receive mode prints message to screen.
+	-w  Write. Followed by the address in hex and the message to send.
+ex) sudo ./raspCC1101 -w 18 Hello
+-There must be no spaces in the message for this version.
+
+NOTE: See wiki for default gpio routing info. 

@@ -47,7 +47,7 @@ int main(int argc, char * argv[])
 		cc1101_strobe(CC1101_STROBE_SIDLE, CC1101_WRITE_SINGLE);
 	}
 	printf("status ok\n\r");
-	if(argc > 3)
+	if(argc > 1)
 	{
 		printf("argv: %s\n\r", argv[1]);
 		if(!strcmp(argv[1], "-w"))
@@ -85,6 +85,16 @@ int main(int argc, char * argv[])
 		} else if (!strcmp(argv[1], "-r")) {
 			cc1101_start_rx();
 			printf("Rx mode started. Waiting...\n\r");
+			while(length == 0)
+			{
+				do
+				{
+				}while(!READ_GD02);
+				cc1101_rd_burst(CC1101_STROBE_SFTX, &length, 1); //read byte count RX_FIFO
+			}
+			cc1101_rd_burst(CC1101_RX_FIFO, rx,length);
+			rx[length] = '\0';
+			printf("Received Message:\n\r%s\n\r", rx);
 		}
 
 	} else {
