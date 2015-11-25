@@ -13,10 +13,12 @@ preprocessor variable in the cc1101.h file
 There's a basic program in main.c that demonstrates the usage 
 of some of the functions.
 The command line usage is as follows:
--First option:
-	-r  Read. Puts the chip into receive mode prints message to screen.
-	-w  Write. Followed by the address in hex and the message to send.
-ex) sudo ./raspCC1101 -w 18 Hello
--There must be no spaces in the message for this version.
+* First option:
+	* -r  Read. Puts the chip into receive mode prints message to screen.
+	* -w  Write. Followed by the address in hex and then the message to send with no spaces.
+```
+$sudo ./raspCC1101 -w 18 Hello
+```
+This example sends "Hello" in ascii text via the CC1101
 
 NOTE: See wiki for default gpio routing info. 
