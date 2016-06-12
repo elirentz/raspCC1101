@@ -365,7 +365,7 @@
 
 /**
  * Init function for cc1101. Performs a soft reset and programs all of the
- * registers based on the config stucture. Also initializes the GPIO used
+ * registers based on the config structure. Also initializes the GPIO used
  * for controling the chip and configures and opens the spi
  * */
 void cc1101_init();
