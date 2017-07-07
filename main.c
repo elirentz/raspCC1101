@@ -93,11 +93,12 @@ int main(int argc, char * argv[])
 				cc1101_rd_burst(CC1101_STROBE_SFTX, &length, 1); //read byte count RX_FIFO
 			}
 			cc1101_rd_burst(CC1101_RX_FIFO, rx,length);
-			rx[length] = '\0';
-			printf("Received Message:\n\r%s\n\r", rx);
+			rx[length-2] = '\0';
+			printf("Received Message:\n\r%s\n\r", &rx[2]);
 		}
 
 	} else {
 		printf("Not enough arguments. Try again.\n\r");
 	}
+	return 1;
 }
